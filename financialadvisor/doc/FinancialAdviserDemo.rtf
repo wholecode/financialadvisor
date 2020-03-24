@@ -1,0 +1,893 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;\f2\fnil\fcharset0 Menlo-Bold;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue255;\red255\green255\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c1680\c19835\c100000;\cssrgb\c100000\c100000\c100000;}
+\margl1440\margr1440\vieww26300\viewh12480\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 \
+get recommendation for risk level 1\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf2 \CocoaLigature0 curl -X GET http://localhost:8080/financialadvisor/v1/api/portfolio/risk/1 | jq\
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\
+                                 Dload  Upload   Total   Spent    Left  Speed\
+100   178    0   178    0     0  17862      0 --:--:-- --:--:-- --:--:-- 19777\
+
+\f2\b \{
+\f1\b0 \
+
+\f2\b   "assetsDTO": [
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Bond"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 80\
+
+\f2\b     \},
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Large Cap"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 20\
+
+\f2\b     \},
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Mid Cap"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 0\
+
+\f2\b     \},
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Foreign"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 0\
+
+\f2\b     \},
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Small Cap"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 0\
+
+\f2\b     \}
+\f1\b0 \
+
+\f2\b   ]
+\f1\b0 \
+
+\f2\b \}
+\f1\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 \CocoaLigature1 \
+\
+Convert the portfolio with only BOND asset to riskLevel 1 - 0 difference\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf2 \CocoaLigature0 curl \\\
+-H "Content-Type: application/json" \\\
+-X POST -d '\{"riskLevel":1, "minAbsolutePercentageToChangeFor": 0, "assetsList": \{"data": [\{"name":"BOND", "number":"100"\}]\} \}' \\\
+ http://localhost:8080/financialadvisor/v1/api/portfolio/optimize   | jq\
+\
+
+\f2\b \{
+\f1\b0 \
+
+\f2\b   "assetsDTO": [
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Bond"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 80\
+
+\f2\b     \},
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Large Cap"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 20\
+
+\f2\b     \},
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Mid Cap"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 0\
+
+\f2\b     \},
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Foreign"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 0\
+
+\f2\b     \},
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Small Cap"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 0\
+
+\f2\b     \}
+\f1\b0 \
+
+\f2\b   ]
+\f1\b0 \
+
+\f2\b \}\
+\
+
+\f1\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 \CocoaLigature1 \
+Recommended asset percentages for risk level 5\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf2 \CocoaLigature0 curl -X GET http://localhost:8080/financialadvisor/v1/api/portfolio/risk/5 | jq\
+\
+\
+
+\f2\b \{
+\f1\b0 \
+
+\f2\b   "assetsDTO": [
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Bond"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 40\
+
+\f2\b     \},
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Large Cap"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 20\
+
+\f2\b     \},
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Mid Cap"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 20\
+
+\f2\b     \},
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Foreign"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 20\
+
+\f2\b     \},
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Small Cap"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 0\
+
+\f2\b     \}
+\f1\b0 \
+
+\f2\b   ]
+\f1\b0 \
+
+\f2\b \}
+\f1\b0 \
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 \CocoaLigature1 Convert the portfolio with only BOND asset to riskLevel 5 - 0 difference\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf2 \CocoaLigature0 curl \\\
+-H "Content-Type: application/json" \\\
+-X POST -d '\{"riskLevel":5, "minAbsolutePercentageToChangeFor": 0, "assetsList": \{"data": [\{"name":"BOND", "number":"100"\}]\} \}' \\\
+ http://localhost:8080/financialadvisor/v1/api/portfolio/optimize   | jq\
+\
+
+\f2\b \{
+\f1\b0 \
+
+\f2\b   "assetsDTO": [
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Bond"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 40\
+
+\f2\b     \},
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Large Cap"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 20\
+
+\f2\b     \},
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Mid Cap"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 20\
+
+\f2\b     \},
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Foreign"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 20\
+
+\f2\b     \},
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Small Cap"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 0\
+
+\f2\b     \}
+\f1\b0 \
+
+\f2\b   ]
+\f1\b0 \
+
+\f2\b \}
+\f1\b0 \
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 \CocoaLigature1 Convert the portfolio  asset to riskLevel 10 - with 5% allowable margin.\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf2 \CocoaLigature0 curl \\\
+-H "Content-Type: application/json" \\\
+-X POST -d '\{"riskLevel":10, "minAbsolutePercentageToChangeFor": 5, "assetsList": \{"data": [
+\f2\b \{"name": "
+\f1\b0 BOND
+\f2\b ",
+\f1\b0  
+\f2\b "number": 
+\f1\b0 40
+\f2\b \},
+\f1\b0  
+\f2\b \{"name": "
+\f1\b0 LARGE_CAP
+\f2\b ", "number": 
+\f1\b0 20
+\f2\b \},
+\f1\b0  
+\f2\b \{"name": "
+\f1\b0 MID_CAP
+\f2\b ","number": 
+\f1\b0 20
+\f2\b \},
+\f1\b0  
+\f2\b \{"name": "
+\f1\b0 FOREIGN
+\f2\b ",
+\f1\b0  
+\f2\b "number": 
+\f1\b0 20
+\f2\b \},\{"name": "
+\f1\b0 SMALL_CAP
+\f2\b ",
+\f1\b0  
+\f2\b "number": 
+\f1\b0 0
+\f2\b \}
+\f1\b0 ]\} \}' \\\
+ http://localhost:8080/financialadvisor/v1/api/portfolio/optimize   | jq\
+\
+
+\f2\b \{
+\f1\b0 \
+
+\f2\b   "assetsDTO": [
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Bond"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 0\
+
+\f2\b     \},
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Large Cap"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 5\
+
+\f2\b     \},
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Mid Cap"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 20\
+
+\f2\b     \},
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Foreign"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 30\
+
+\f2\b     \},
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Small Cap"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 45\
+
+\f2\b     \}
+\f1\b0 \
+
+\f2\b   ]
+\f1\b0 \
+
+\f2\b \}
+\f1\b0 \
+\
+\
+\
+curl -X GET http://localhost:8080/financialadvisor/v1/api/portfolio/risk/
+\f2\b\fs24 8
+\f1\b0\fs22  | jq\
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\
+                                 Dload  Upload   Total   Spent    Left  Speed\
+100   181    0   181    0     0  21117      0 --:--:-- --:--:-- --:--:-- 22625\
+
+\f2\b \{
+\f1\b0 \
+
+\f2\b   "assetsDTO": [
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Bond"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 10\
+
+\f2\b     \},
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Large Cap"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 20\
+
+\f2\b     \},
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Mid Cap"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 40\
+
+\f2\b     \},
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Foreign"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 20\
+
+\f2\b     \},
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Small Cap"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 10\
+
+\f2\b     \}
+\f1\b0 \
+
+\f2\b   ]
+\f1\b0 \
+
+\f2\b \}
+\f1\b0 \
+\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 \CocoaLigature1 Convert the portfolio  asset to riskLevel 8 - with 10% allowable margin.\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf2 \CocoaLigature0 curl \\\
+-H "Content-Type: application/json" \\\
+-X POST -d '\{"riskLevel":8, "minAbsolutePercentageToChangeFor": 5, "assetsList": \{"data": [
+\f2\b \{"name": "
+\f1\b0 BOND
+\f2\b ",
+\f1\b0  
+\f2\b "number": 
+\f1\b0 30
+\f2\b \},
+\f1\b0  
+\f2\b \{"name": "
+\f1\b0 LARGE_CAP
+\f2\b ", "number": 
+\f1\b0 20
+\f2\b \},
+\f1\b0  
+\f2\b \{"name": "
+\f1\b0 MID_CAP
+\f2\b ","number": 
+\f1\b0 20
+\f2\b \},
+\f1\b0  
+\f2\b \{"name": "
+\f1\b0 FOREIGN
+\f2\b ",
+\f1\b0  
+\f2\b "number": 
+\f1\b0 20
+\f2\b \},\{"name": "
+\f1\b0 SMALL_CAP
+\f2\b ",
+\f1\b0  
+\f2\b "number": 1
+\f1\b0 0
+\f2\b \}
+\f1\b0 ]\} \}' \\\
+ http://localhost:8080/financialadvisor/v1/api/portfolio/optimize   | jq\
+\
+\
+
+\f2\b \{
+\f1\b0 \
+
+\f2\b   "assetsDTO": [
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Bond"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 10\
+
+\f2\b     \},
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Large Cap"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 20\
+
+\f2\b     \},
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Mid Cap"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 40\
+
+\f2\b     \},
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Foreign"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 20\
+
+\f2\b     \},
+\f1\b0 \
+
+\f2\b     \{
+\f1\b0 \
+
+\f2\b       "name": 
+\f1\b0 "Small Cap"
+\f2\b ,
+\f1\b0 \
+
+\f2\b       "number": 
+\f1\b0 10\
+
+\f2\b     \}
+\f1\b0 \
+
+\f2\b   ]
+\f1\b0 \
+
+\f2\b \}\
+\
+\
+\
+
+\f1\b0 curl -X GET http://localhost:8080/financialadvisor/v1/api/portfolio/risk/20 | jq\
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\
+                                 Dload  Upload   Total   Spent    Left  Speed\
+100   218    0   218    0     0   4536      0 --:--:-- --:--:-- --:--:--  4541\
+
+\f2\b \{
+\f1\b0 \
+
+\f2\b   "timestamp": 
+\f1\b0 "2020-03-24T19:55:35.700+0000"
+\f2\b ,
+\f1\b0 \
+
+\f2\b   "status": 
+\f1\b0 500
+\f2\b ,
+\f1\b0 \
+
+\f2\b   "error": 
+\f1\b0 "Internal Server Error"
+\f2\b ,
+\f1\b0 \
+
+\f2\b   "message": 
+\f1\b0 "getPortfolioForRisk.riskNumber: must be less than or equal to 10"
+\f2\b ,
+\f1\b0 \
+
+\f2\b   "path": 
+\f1\b0 "/financialadvisor/v1/api/portfolio/risk/20"\
+
+\f2\b \}
+\f1\b0 \
+\
+curl -X GET http://localhost:8080/financialadvisor/v1/api/portfolio/risk/0 | jq\
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\
+                                 Dload  Upload   Total   Spent    Left  Speed\
+100   219    0   219    0     0  20362      0 --:--:-- --:--:-- --:--:-- 21900\
+
+\f2\b \{
+\f1\b0 \
+
+\f2\b   "timestamp": 
+\f1\b0 "2020-03-24T19:56:12.960+0000"
+\f2\b ,
+\f1\b0 \
+
+\f2\b   "status": 
+\f1\b0 500
+\f2\b ,
+\f1\b0 \
+
+\f2\b   "error": 
+\f1\b0 "Internal Server Error"
+\f2\b ,
+\f1\b0 \
+
+\f2\b   "message": 
+\f1\b0 "getPortfolioForRisk.riskNumber: must be greater than or equal to 1"
+\f2\b ,
+\f1\b0 \
+
+\f2\b   "path": 
+\f1\b0 "/financialadvisor/v1/api/portfolio/risk/0"\
+
+\f2\b \}
+\f1\b0 \
+\
+\
+curl \\\
+-H "Content-Type: application/json" \\\
+-X POST -d '\{"riskLevel":5, "minAbsolutePercentageToChangeFor": 0, "assetsList": \{"data": [\{"name":"
+\f2\b\fs24 BONDIII
+\f1\b0\fs22 ", "number":"100"\}]\} \}' \\\
+ http://localhost:8080/financialadvisor/v1/api/portfolio/optimize   | jq\
+\
+
+\f2\b \{
+\f1\b0 \
+
+\f2\b   "timestamp": 
+\f1\b0 "2020-03-24T19:57:31.461+0000"
+\f2\b ,
+\f1\b0 \
+
+\f2\b   "status": 
+\f1\b0 400
+\f2\b ,
+\f1\b0 \
+
+\f2\b   "error": 
+\f1\b0 "Bad Request"
+\f2\b ,
+\f1\b0 \
+
+\f2\b   "message": 
+\f1\b0 "Illegal asset name: BONDIII"
+\f2\b ,
+\f1\b0 \
+
+\f2\b   "path": 
+\f1\b0 "/financialadvisor/v1/api/portfolio/optimize"\
+
+\f2\b \}\
+\
+\
+\
+\
+\
+\
+\
+
+\f1\b0 curl \\\
+-H "Content-Type: application/json" \\\
+-X POST -d '\{"riskLevel":5, "minAbsolutePercentageToChangeFor": 0, "assetsList": \{"data": [\{"name":"
+\f2\b\fs24 BOND
+\f1\b0\fs22 ", "number":"
+\f2\b\fs24 -100
+\f1\b0\fs22 "\}]\} \}' \\\
+ http://localhost:8080/financialadvisor/v1/api/portfolio/optimize   | jq\
+\
+
+\f2\b \{
+\f1\b0 \
+
+\f2\b   "timestamp": 
+\f1\b0 "2020-03-24T19:59:13.119+0000"
+\f2\b ,
+\f1\b0 \
+
+\f2\b   "status": 
+\f1\b0 400
+\f2\b ,
+\f1\b0 \
+
+\f2\b   "error": 
+\f1\b0 "Bad Request"
+\f2\b ,
+\f1\b0 \
+
+\f2\b   "message": 
+\f1\b0 "Asset value cannot be less than zero"
+\f2\b ,
+\f1\b0 \
+
+\f2\b   "path": 
+\f1\b0 "/financialadvisor/v1/api/portfolio/optimize"\
+
+\f2\b \}
+\f1\b0 \
+\
+}

@@ -9,6 +9,13 @@ public class PortfolioOptimizationRequestDTO {
 	
 	PortfolioDTO portfolioDTO;
 	
+	/**
+	 * 
+	 * @param riskLevel users expected risk level
+	 * @param assetsList  list of assets in the portfolio
+	 * @param minAbsolutePercentageToChangeFor  the minimum difference for each asset
+	 * between the required percentage and the existing percentage in the portfolio.
+	 */
 	
 	public PortfolioOptimizationRequestDTO(
 		int riskLevel, 

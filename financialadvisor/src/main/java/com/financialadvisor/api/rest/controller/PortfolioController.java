@@ -95,25 +95,6 @@ public class PortfolioController {
 
 	
 	
-	
-	@PostMapping("/test2")
-	public BodyBuilder test2(
-		@RequestBody ListWrapper<NameValuePairDTO> wrapper) 	
-	{
-		List<NameValuePairDTO> list = wrapper.getData();
-		return ResponseEntity.ok();
-	}
-
-	
-	@PostMapping("/test")
-	public BodyBuilder test(
-		@RequestBody Login dto) 	
-	{
-				
-		return ResponseEntity.ok();
-	}
-
-	
 	public static class Login {
 
 	    String username;
